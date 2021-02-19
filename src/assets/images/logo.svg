@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="208.665" height="380.157" viewBox="0 0 208.665 380.157">
+  <g id="Groupe_44" data-name="Groupe 44" transform="translate(-84 -202)">
+    <g id="Composant_1_2" data-name="Composant 1 – 2" transform="translate(84 202)">
+      <g id="Groupe_1" data-name="Groupe 1">
+        <path id="Tracé_1" data-name="Tracé 1" d="M457.488,302.615c-7.483,19.839-24.545,18.989-24.545,18.989H418.392s-17.062.85-24.545-18.989-33.224-71.7-33.224-71.7-8.381-11.62,0-47.9S369,141.92,369,141.92s.077-.99.119-2.658c-20.4,26.991-47.788,75.5-47.788,141.5,0,76.413,69.555,120.578,69.555,120.578s58.846-37.417,68.253-102.917C458.524,299.936,457.967,301.343,457.488,302.615Z" transform="translate(-321.335 -139.249)" fill="#55a657"/>
+        <path id="Tracé_2" data-name="Tracé 2" d="M398.038,249.05c2.1-45.346-17.361-44.779-17.361-44.779s-7.183,6.8-4.19,25.224S398.038,249.05,398.038,249.05Z" transform="translate(-321.335 -139.249)" fill="#55a657"/>
+        <path id="Tracé_3" data-name="Tracé 3" d="M482.2,139.249c.039,1.664.13,2.671.13,2.671s0,4.818,8.381,41.1,0,47.9,0,47.9-25.741,51.864-33.224,71.7S432.943,321.6,432.943,321.6H418.392s-17.062.85-24.545-18.989c-.479-1.272-1.036-2.679-1.654-4.192,9.406,65.5,68.252,102.917,68.252,102.917S530,357.175,530,280.762C530,214.752,502.606,166.237,482.2,139.249Z" transform="translate(-321.335 -139.249)" fill="#38744c"/>
+        <path id="Tracé_4" data-name="Tracé 4" d="M474.848,229.495c2.993-18.422-4.19-25.224-4.19-25.224S451.2,203.7,453.3,249.05C453.3,249.05,471.855,247.916,474.848,229.495Z" transform="translate(-321.335 -139.249)" fill="#38744c"/>
+      </g>
+    </g>
+    <g id="Composant_2_2" data-name="Composant 2 – 2" transform="translate(93 473)">
+      <g id="Groupe_2" data-name="Groupe 2">
+        <text id="MyReptile" transform="translate(0 49)" fill="#38744c" font-size="57.379" font-family="BabyPandaRegular, Baby Panda"><tspan x="0" y="0">MyReptile</tspan></text>
+        <text id="SCAN" transform="translate(51.517 94.157)" fill="#55a657" font-size="57.309" font-family="BabyPandaRegular, Baby Panda"><tspan x="0" y="0">SCAN</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>
