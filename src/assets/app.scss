@@ -1,13 +1,21 @@
 @import "variables.scss";
+* {
+  box-sizing: border-box;
+  
+}
 
-b {
+b, a {
     text-decoration: none;
     color: $light_green;
     font-size: 10px;
     font-family: sans-serif;
 }
 
-body {
+ul li {
+  list-style: none;
+}
+
+body, html {
   margin: 0 auto;
   box-sizing: border-box;
   width: 100vw;

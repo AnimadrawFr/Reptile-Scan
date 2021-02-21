@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="burgerMenu" >
-      <img src="@/assets/images/burger_icon.svg" alt="" v-if="this.$route.name !== 'preHome'" />
+      <img @click="sideBarEvent" src="@/assets/images/burger_icon.svg" alt="" v-if="this.$route.name !== 'preHome'" />
     </div>
     <div class="langsChoice">
       <transition name="slide-fade">
@@ -27,6 +27,9 @@ export default {
       langs_showed: false,
     };
   },
+  props: {
+    sideBarEvent: Function
+  }
 };
 </script>
 
