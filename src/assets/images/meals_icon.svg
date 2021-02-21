@@ -1,0 +1,18 @@
+<svg id="Composant_32_2" data-name="Composant 32 – 2" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45">
+  <circle id="Ellipse_17" data-name="Ellipse 17" cx="22.5" cy="22.5" r="22.5" fill="#fff"/>
+  <g id="flat" transform="translate(-14 -97.997)">
+    <path id="Tracé_117" data-name="Tracé 117" d="M24,376H48.992v1.724H24Z" transform="translate(0 -249.783)" fill="#38744c"/>
+    <path id="Tracé_118" data-name="Tracé 118" d="M56.13,262.463H32L32.862,256H55.268Z" transform="translate(-7.569 -136.247)" fill="#55a657"/>
+    <path id="Tracé_119" data-name="Tracé 119" d="M432.63,310.368a.431.431,0,0,1-.427-.374l-.2-1.508a.431.431,0,0,1,.854-.114l.2,1.508a.431.431,0,0,1-.428.488Z" transform="translate(-386.023 -185.444)" fill="#fafafa"/>
+    <path id="Tracé_120" data-name="Tracé 120" d="M427.688,273.291a.431.431,0,0,1-.427-.374l-.057-.431a.431.431,0,0,1,.854-.114l.057.431a.431.431,0,0,1-.428.488Z" transform="translate(-381.483 -151.383)" fill="#fafafa"/>
+    <path id="Tracé_121" data-name="Tracé 121" d="M210.032,288.955a.96.96,0,0,0-1.91-.137h-1.665a1.47,1.47,0,1,0-.083,1.645h1.83a1.755,1.755,0,0,0,1.827-1.508Z" transform="translate(-170.823 -166.519)" fill="#fafafa"/>
+    <path id="Tracé_122" data-name="Tracé 122" d="M83.787,119.753a3.016,3.016,0,0,0-2.675-3.431,3.016,3.016,0,0,0-3.22-2.153,4.741,4.741,0,0,0-7.97,0,3.016,3.016,0,0,0-3.22,2.153,3.016,3.016,0,0,0-2.675,3.431Z" transform="translate(-37.842)" fill="#7db17e"/>
+    <g id="Groupe_24" data-name="Groupe 24" transform="translate(30.894 113.29)">
+      <path id="Tracé_123" data-name="Tracé 123" d="M154.154,193.724a.431.431,0,0,1-.431-.431.431.431,0,1,0-.862,0,.431.431,0,1,1-.862,0,1.293,1.293,0,1,1,2.585,0A.431.431,0,0,1,154.154,193.724Z" transform="translate(-152 -188.984)" fill="#38744c"/>
+      <path id="Tracé_124" data-name="Tracé 124" d="M330.154,201.724a.431.431,0,0,1-.431-.431.431.431,0,1,0-.862,0,.431.431,0,1,1-.862,0,1.293,1.293,0,0,1,2.585,0A.431.431,0,0,1,330.154,201.724Z" transform="translate(-318.52 -196.553)" fill="#38744c"/>
+      <path id="Tracé_125" data-name="Tracé 125" d="M232.429,137.736a.431.431,0,0,1-.431-.425A1.294,1.294,0,0,1,233.271,136a.431.431,0,0,1,.013.862.431.431,0,0,0-.425.437.431.431,0,0,1-.424.437Z" transform="translate(-227.689 -135.999)" fill="#38744c"/>
+      <ellipse id="Ellipse_19" data-name="Ellipse 19" cx="0.5" cy="1" rx="0.5" ry="1" transform="translate(5.098 3.53)" fill="#38744c"/>
+      <circle id="Ellipse_20" data-name="Ellipse 20" cx="0.5" cy="0.5" r="0.5" transform="translate(7.098 1.53)" fill="#38744c"/>
+    </g>
+  </g>
+</svg>

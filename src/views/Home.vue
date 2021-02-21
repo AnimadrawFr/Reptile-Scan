@@ -72,18 +72,22 @@
       </div>
     </div>
 
-    <div ref="container" class="container-list">
-      <div class="card">
-        <img
-          class="card_content"
-          src="@/assets/images/sample_picture.jpg"
-          alt=""
-        />
-        <div class="card_bottom">
-          <p>Animal name</p>
-          <span>♡</span>
+    <div ref="container" class="container container-list">
+      
+        <div class="card">
+          <router-link to="/single">
+          <img
+            class="card_content"
+            src="@/assets/images/sample_picture.jpg"
+            alt=""
+          />
+          </router-link>
+          <div class="card_bottom">
+            <p>Animal name</p>
+            <span>♡</span>
+          </div>
         </div>
-      </div>
+      
       <div class="card">
         <img
           class="card_content"
@@ -140,8 +144,8 @@ export default {
     return {
       selected: [],
       cards: document.querySelectorAll(".cards"),
-      quadriIcon: require('@/assets/images/sort_quadri_icon.svg'),
-      listIcon: require('@/assets/images/sort_list_icon.svg')
+      quadriIcon: require("@/assets/images/sort_quadri_icon.svg"),
+      listIcon: require("@/assets/images/sort_list_icon.svg"),
     };
   },
   methods: {
@@ -158,11 +162,11 @@ export default {
       if (container.contains(oldClass)) {
         container.remove(oldClass);
         container.add(newClass);
-        this.$refs.swapIcon.src = this.listIcon
+        this.$refs.swapIcon.src = this.listIcon;
       } else {
         container.remove(newClass);
         container.add(oldClass);
-        this.$refs.swapIcon.src = this.quadriIcon
+        this.$refs.swapIcon.src = this.quadriIcon;
       }
     },
   },
@@ -236,6 +240,9 @@ export default {
   }
 }
 
+.container:last-child {
+  margin-bottom: 80px;
+}
 .container-quadri {
   // border: 1px solid red;
   position: relative;
@@ -249,7 +256,7 @@ export default {
     position: relative;
     // border: 1px solid red;
     min-height: 160px;
-    width: 48%;
+    max-width: 48%;
     color: $light_green;
     font-family: sans-serif;
     .card_content {
@@ -262,6 +269,8 @@ export default {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      width: 100%;
+      //border: 1px solid red;
       p {
         font-size: 12px;
       }

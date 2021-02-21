@@ -1,9 +1,15 @@
 <template>
   <div id="app">
-    <Sidebar v-if="this.$route.name !== 'preHome'" :sideBarEvent="closeSideBar"/>
+    <Sidebar
+      v-if="this.$route.name !== 'preHome'"
+      :sideBarEvent="closeSideBar"
+    />
     <GlobalHeader :sideBarEvent="openSideBar" />
     <router-view />
-    <Navigation v-if="this.$route.name !== 'preHome'" :sideBarEvent="openSideBar"/>
+    <Navigation
+      v-if="this.$route.name !== 'preHome'"
+      :sideBarEvent="openSideBar"
+    />
   </div>
 </template>
 
@@ -20,7 +26,9 @@ export default {
     GlobalHeader,
     Navigation,
   },
-
+  data: function () {
+    return {};
+  },
   methods: {
     openSideBar() {
       gsap.to("#sidebar", 0.5, {
@@ -29,7 +37,7 @@ export default {
     },
     closeSideBar() {
       gsap.to("#sidebar", 0.5, {
-        left: '-100%',
+        left: "-100%",
       });
     },
   },

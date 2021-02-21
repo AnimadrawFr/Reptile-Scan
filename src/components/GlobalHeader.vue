@@ -1,7 +1,12 @@
 <template>
-  <div class="header">
-    <div class="burgerMenu" >
-      <img @click="sideBarEvent" src="@/assets/images/burger_icon.svg" alt="" v-if="this.$route.name !== 'preHome'" />
+  <div class="header" :class="(this.$route.name !== 'preHome' && this.$route.name !== 'home') ? 'white' : ''" >
+    <div class="burgerMenu">
+      <img
+        @click="sideBarEvent"
+        src="@/assets/images/burger_icon.svg"
+        alt=""
+        v-if="this.$route.name !== 'preHome'"
+      />
     </div>
     <div class="langsChoice">
       <transition name="slide-fade">
@@ -25,11 +30,12 @@ export default {
   data: () => {
     return {
       langs_showed: false,
+      isWhite: false
     };
   },
   props: {
-    sideBarEvent: Function
-  }
+    sideBarEvent: Function,
+  },
 };
 </script>
 
@@ -41,6 +47,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  &.white {
+    position: absolute;
+    filter: brightness(100);
+  }
   .burgerMenu {
     img {
       height: 30px;

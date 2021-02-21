@@ -1,7 +1,10 @@
 <template>
   <div id="navigation">
     <div class="left_menu">
-      <img src="@/assets/images/home_icon.svg" alt="" />
+      <router-link to="home">
+        <img src="@/assets/images/home_icon.svg" alt="" />
+      </router-link>
+      
       <img @click="sideBarEvent" src="@/assets/images/profil_icon.svg" alt="" />
     </div>
     <div class="middle_menu">
