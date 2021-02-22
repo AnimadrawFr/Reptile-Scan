@@ -1,14 +1,9 @@
 @import "variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap");
+
 * {
   box-sizing: border-box;
-}
-
-b,
-a {
-  text-decoration: none;
-  color: $light_green;
-  font-size: 10px;
-  font-family: sans-serif;
+  font-family: "comfortaa";
 }
 
 ul li {
@@ -37,7 +32,7 @@ input[type="password"] {
   height: 30px;
   width: 250px;
   color: $light_green;
-  font-family: sans-serif;
+
   padding: 2px 5px;
   font-size: 12px;
   &::placeholder {
@@ -59,7 +54,7 @@ input[type="password"] {
     }
     .text {
       margin: 0 5px;
-      font-family: sans-serif;
+
       font-size: 20px;
       text-align: center;
       width: 80px;
@@ -81,7 +76,11 @@ input[type="password"] {
   }
 }
 
-.single_detail {
+.single_detail, #health {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   header {
     position: relative;
     height: 55vh;
@@ -94,7 +93,9 @@ input[type="password"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: -1;
+    flex-direction: column;
+    color: $white;
+    //z-index: -1;
     &::before {
       content: "";
       background-color: $light_green;
@@ -103,6 +104,10 @@ input[type="password"] {
       width: 100vw;
       position: absolute;
       border-bottom-left-radius: 120px;
+      z-index: 0;
+    }
+    .section_head_img {
+      position: relative;
     }
     .icon {
       position: absolute;
@@ -133,6 +138,78 @@ input[type="password"] {
       border: 3px solid $white;
       border-radius: 50%;
     }
+    .animal_infos {
+      //border: 1px solid red;
+      position: absolute;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      flex-direction: column;
+      bottom: 0;
+      right: 10px;
+      ul li {
+        color: $white;
+
+        display: inline;
+      }
+    }
+  }
+  main {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-top: 20px;
+    //border: 1px solid red;
+    width: 90vw;
+    //min-height: 100vh;
+    margin-bottom: 80px;
+    .name {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 25px;
+      color: $light_green;
+      height: 30px;
+      //border: 1px solid blue;
+      .line {
+        height: 2px;
+        width: 10%;
+        margin: 0 5px;
+        background-color: $light_green;
+      }
+    }
+    .birth_date {
+      margin-top: 2px;
+      color: $light_green;
+    }
+    .global_information {
+      text-align: center;
+      line-height: 5px;
+      color: $dark_green;
+      font-weight: bold;
+
+      .description {
+        margin: 50px 0;
+        line-height: 16px;
+        color: $light_green;
+        font-weight: lighter;
+      }
+      .last_action {
+        .title {
+          color: $dark_green;
+          font-size: 18px;
+          font-weight: bold;
+          margin-bottom: 25px;
+        }
+        p {
+          color: $light_green;
+          font-weight: normal;
+        }
+      }
+    }
   }
 }
 
@@ -147,4 +224,3 @@ input[type="password"] {
   transform: translateX(10px);
   opacity: 0;
 }
-

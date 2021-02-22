@@ -3,6 +3,8 @@ import App from "./App.vue";
 import PreHome from "@/views/PreHome.vue";
 import Home from "@/views/Home.vue";
 import Single from "@/views/Single.vue";
+import Health from "@/views/Health.vue";
+
 import Router from "vue-router";
 
 Vue.config.productionTip = false;
@@ -26,6 +28,11 @@ const router = new Router({
       path: "/single",
       component: Single,
       name: "single",
+    },
+    {
+      path: "/health",
+      component: Health,
+      name: "health",
     },
   ],
 });

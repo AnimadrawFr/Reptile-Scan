@@ -18,7 +18,7 @@ export default {
 
 .footer {
   color: $dark_green;
-  font-family: sans-serif;
+  
   font-size: 10px;
   position: fixed;
   width: 100vw;

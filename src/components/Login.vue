@@ -58,7 +58,7 @@ b {
     text-align: center;
     font-size: 12px;
     color: $light_green;
-    font-family: sans-serif;
+    
     margin: 10px 0;
   }
   form {
@@ -74,7 +74,7 @@ b {
       label {
         margin-left: 5px;
         color: $grey;
-        font-family: sans-serif;
+        
         font-size: 11px;
       }
     }

@@ -85,7 +85,7 @@ export default {
     .user_informations {
       text-align: center;
       color: $light_green;
-      font-family: sans-serif;
+      
       p {
         font-size: 14px;
       }
@@ -109,10 +109,17 @@ export default {
       margin: 20px 0;
       color: $grey;
       text-align: center;
-      font-family: sans-serif;
+      
       font-size: 12px;
       width: 70%;
     }
   }
+}
+
+b,
+a {
+  text-decoration: none;
+  color: $light_green;
+  font-size: 10px;
 }
 </style>

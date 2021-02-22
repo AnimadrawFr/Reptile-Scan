@@ -50,6 +50,7 @@ export default {
   &.white {
     position: absolute;
     filter: brightness(100);
+    z-index: 1000;
   }
   .burgerMenu {
     img {
@@ -65,7 +66,7 @@ export default {
       margin: 0;
       li {
         display: inline-block;
-        font-family: sans-serif;
+        
         color: $light_green;
         margin: 0 5px;
         font-size: 12px;

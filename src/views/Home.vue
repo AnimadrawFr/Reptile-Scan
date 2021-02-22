@@ -84,7 +84,7 @@
           </router-link>
           <div class="card_bottom">
             <p>Animal name</p>
-            <span>♡</span>
+            <img src="@/assets/images/green_no_fav_icon.svg" alt="">
           </div>
         </div>
       
@@ -96,7 +96,7 @@
         />
         <div class="card_bottom">
           <p>Animal name</p>
-          <span>♡</span>
+          <img src="@/assets/images/green_no_fav_icon.svg" alt="">
         </div>
       </div>
       <div class="card">
@@ -107,7 +107,7 @@
         />
         <div class="card_bottom">
           <p>Animal name</p>
-          <span>♡</span>
+          <img src="@/assets/images/green_no_fav_icon.svg" alt="">
         </div>
       </div>
       <div class="card">
@@ -118,7 +118,7 @@
         />
         <div class="card_bottom">
           <p>Animal name</p>
-          <span>♡</span>
+          <img src="@/assets/images/green_no_fav_icon.svg" alt="">
         </div>
       </div>
       <div class="card">
@@ -129,7 +129,7 @@
         />
         <div class="card_bottom">
           <p>Animal name</p>
-          <span>♡</span>
+          <img src="@/assets/images/green_no_fav_icon.svg" alt="">
         </div>
       </div>
     </div>
@@ -222,7 +222,7 @@ export default {
       padding: 0 10px;
       font-size: 13px;
       border-radius: 5px;
-      font-family: sans-serif;
+      
       color: $light_green;
       border: 1.5px solid $light_green;
       margin: 0 5px;
@@ -258,7 +258,7 @@ export default {
     min-height: 160px;
     max-width: 48%;
     color: $light_green;
-    font-family: sans-serif;
+    
     .card_content {
       width: 100%;
       object-fit: cover;
@@ -270,12 +270,14 @@ export default {
       align-items: center;
       justify-content: space-between;
       width: 100%;
+      height: 45px;
       //border: 1px solid red;
       p {
         font-size: 12px;
       }
-      span {
-        font-size: 20px;
+      img {
+        width: 15px;
+        height: 15px;
       }
     }
   }
@@ -293,7 +295,7 @@ export default {
     min-height: 160px;
     width: 100%;
     color: $light_green;
-    font-family: sans-serif;
+    
     .card_content {
       width: 100%;
       height: 150px;
@@ -308,8 +310,9 @@ export default {
       p {
         font-size: 12px;
       }
-      span {
-        font-size: 20px;
+      img {
+        width: 15px;
+        height: 15px;
       }
     }
   }
@@ -323,7 +326,7 @@ export default {
   margin-top: 40px;
   h1 {
     color: $light_green;
-    font-family: sans-serif;
+    
     width: 100px;
     margin: 0;
   }
