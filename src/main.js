@@ -4,11 +4,16 @@ import PreHome from "@/views/PreHome.vue";
 import Home from "@/views/Home.vue";
 import Single from "@/views/Single.vue";
 import Health from "@/views/Health.vue";
+import Meals from "@/views/Meals.vue";
+import Donut from 'vue-css-donut-chart';
+import 'vue-css-donut-chart/dist/vcdonut.css';
 
 import Router from "vue-router";
 
 Vue.config.productionTip = false;
 Vue.use(Router);
+Vue.use(Donut)
+
 
 const router = new Router({
   mode: "history",
@@ -33,6 +38,11 @@ const router = new Router({
       path: "/health",
       component: Health,
       name: "health",
+    },
+    {
+      path: "/meals",
+      component: Meals,
+      name: "meals",
     },
   ],
 });

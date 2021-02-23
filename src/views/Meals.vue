@@ -1,17 +1,24 @@
 <template>
   <div id="health">
     <header :style="{ backgroundImage: `url('${animalPicture}')` }">
-      
       <div class="header_content">
-        <h3>Health</h3>
-        <span class="weight_info">+5g</span>
-        <span class="size_info">+60cm</span>
-        <img
-          class="section_head_img"
-          src="@/assets/images/health_head.svg"
-          alt=""
-        />
-        
+        <h3>Meals</h3>
+        <span class="weight_info">success</span>
+        <span class="size_info">missed</span>
+        <vc-donut
+          :sections="[
+            { value: 60, color: '#CFE6FF', label: 'succes' },
+            { value: 40, color: '#CEFF7A', label: 'missed' },
+          ]"
+          :size="200"
+          unit="px"
+          :total="100"
+          background="rgba(0, 0, 0, 0.8)"
+          :thickness="20"
+          text="60% succes"
+        >
+        </vc-donut>
+
         <div class="animal_infos">
           <img src="@/assets/images/no_fav_icon.svg" alt="" />
           <ul>
@@ -27,52 +34,27 @@
         <p>Animal name</p>
         <div class="line"></div>
       </div>
-      <tabs>
-        <tab title="weight">
-          <button class="card addAction">Add</button>
-          <div class="card">
-            <div class="date">
-              <h3 class="day">23</h3>
-              <p class="month">07/20</p>
-            </div>
-            <div class="sepp"></div>
-            <div class="data">60 cm</div>
+      <div class="chooseMonth">
+        <div class="prev">
+          <img src="@/assets/images/prev.svg" alt="" />
+        </div>
+        <div class="date">October 2020</div>
+        <div class="next">
+          <img src="@/assets/images/next.svg" alt="" />
+        </div>
+      </div>
+      <p>Meals of the month :</p>
+      <div class="meals">
+        <div class="card">
+          <div class="date">
+            <h3 class="day">23</h3>
+            <p class="month">07/20</p>
           </div>
-          <div class="card">
-            <div class="date">
-              <h3 class="day">23</h3>
-              <p class="month">07/20</p>
-            </div>
-            <div class="sepp"></div>
-            <div class="data">60 cm</div>
-          </div>
-          <div class="card">
-            <div class="date">
-              <h3 class="day">23</h3>
-              <p class="month">07/20</p>
-            </div>
-            <div class="sepp"></div>
-            <div class="data">60 cm</div>
-          </div>
-        </tab>
-        <tab title="size">
-          <button class="card addAction">Add</button>
-        </tab>
-        <tab title="visits">
-          <button class="card addAction">Add</button>
-        </tab>
-        <tab title="treatments">
-          <button class="card addAction">Add</button>
-          <div class="card">
-            <div class="date">
-              <h3 class="day">23</h3>
-              <p class="month">07/20</p>
-            </div>
-            <div class="sepp"></div>
-            <div class="data">60 cm</div>
-          </div>
-        </tab>
-      </tabs>
+          <div class="sepp"></div>
+          <div class="data">Mouse 70g <br/> accepted</div>
+        </div>
+        <button class="card addAction">Add</button>
+      </div>
     </main>
   </div>
 </template>
@@ -95,7 +77,7 @@ export default {
 </script>
 
 <style src="vue-slim-tabs/themes/default.css"></style>
-<style  lang="scss" scoped>
+<style  lang="scss">
 @import "./src/assets/app.scss";
 .header_content {
   span {
@@ -103,26 +85,33 @@ export default {
     font-size: 14px;
   }
   span.weight_info {
-    top: 140px;
-    right: 56px;
+    margin-top: 29px;
   }
   span.size_info {
-    bottom: 137px;
-    left: 56px;
+    top: 262px;
   }
+}
+.data {
+  font-size: 12px;
 }
 
-.vue-tablist {
-  border: none;
-  li {
-    background-color: transparent;
-    margin: 0 5px;
-    border: 1px solid $light_green;
-    color: $light_green;
-    border-radius: 5px;
-  }
+main p {
+  color: $dark_green;
+  font-weight: bold;
 }
-.vue-tabpanel {
+.chooseMonth {
+  height: 40px;
+  width: 100%;
+  background-color: $dark_green;
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.meals {
   display: flex;
   align-items: center;
   justify-content: space-between;

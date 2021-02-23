@@ -1,23 +1,55 @@
 <template>
   <div id="single" class="single_detail">
     <header :style="{ backgroundImage: `url('${animalPicture}')` }">
-      <div
-        class="animal_picture"
-        :style="{ backgroundImage: `url('${animalPicture}')` }"
-      ></div>
-      <router-link to="/health" tag="img" :src="require('@/assets/images/health_icon.svg')" class="icon health"></router-link>
-      <router-link to="/moults" tag="img" :src="require('@/assets/images/moults_icon.svg')" class="icon moults"></router-link>
-      <router-link to="/habitat" tag="img" :src="require('@/assets/images/habitat_icon.svg')" class="icon habitat"></router-link>
-      <router-link to="/coupling" tag="img" :src="require('@/assets/images/coupling_icon.svg')" class="icon couplings"></router-link>
-      <router-link to="/laying" tag="img" :src="require('@/assets/images/laying_icon.svg')" class="icon layings"></router-link>
-      <router-link to="/meals" tag="img" :src="require('@/assets/images/meals_icon.svg')" class="icon meals"></router-link>
+      <div class="header_content">
+        <div
+          class="animal_picture"
+          :style="{ backgroundImage: `url('${animalPicture}')` }"
+        ></div>
+        <router-link
+          to="/health"
+          tag="img"
+          :src="require('@/assets/images/health_icon.svg')"
+          class="icon health"
+        ></router-link>
+        <router-link
+          to="/moults"
+          tag="img"
+          :src="require('@/assets/images/moults_icon.svg')"
+          class="icon moults"
+        ></router-link>
+        <router-link
+          to="/habitat"
+          tag="img"
+          :src="require('@/assets/images/habitat_icon.svg')"
+          class="icon habitat"
+        ></router-link>
+        <router-link
+          to="/coupling"
+          tag="img"
+          :src="require('@/assets/images/coupling_icon.svg')"
+          class="icon couplings"
+        ></router-link>
+        <router-link
+          to="/laying"
+          tag="img"
+          :src="require('@/assets/images/laying_icon.svg')"
+          class="icon layings"
+        ></router-link>
+        <router-link
+          to="/meals"
+          tag="img"
+          :src="require('@/assets/images/meals_icon.svg')"
+          class="icon meals"
+        ></router-link>
 
-      <div class="animal_infos">
-        <img src="@/assets/images/no_fav_icon.svg" alt="" />
-        <ul>
-          <li>Snakes,</li>
-          <li>Pythons</li>
-        </ul>
+        <div class="animal_infos">
+          <img src="@/assets/images/no_fav_icon.svg" alt="" />
+          <ul>
+            <li>Snakes,</li>
+            <li>Pythons</li>
+          </ul>
+        </div>
       </div>
     </header>
     <main class="flex-column">

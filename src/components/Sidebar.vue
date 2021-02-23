@@ -47,7 +47,7 @@ export default {
     left: 15px;
     cursor: pointer;
   }
-  z-index: 1000;
+  z-index: 2000;
   width: 100%;
   min-height: 100vh;
   padding: 20px 0;
