@@ -5,6 +5,13 @@ import Home from "@/views/Home.vue";
 import Single from "@/views/Single.vue";
 import Health from "@/views/Health.vue";
 import Meals from "@/views/Meals.vue";
+import Layings from "@/views/Layings.vue";
+import Couplings from "@/views/Couplings.vue";
+import VueAxios from 'vue-axios'
+import axios from 'axios'
+
+Vue.use(VueAxios, axios)
+
 import Donut from 'vue-css-donut-chart';
 import 'vue-css-donut-chart/dist/vcdonut.css';
 
@@ -44,6 +51,16 @@ const router = new Router({
       component: Meals,
       name: "meals",
     },
+    {
+      path: "/layings",
+      component: Layings,
+      name: "layings"
+    },
+    {
+      path: "/couplings",
+      component: Couplings,
+      name: "couplings"
+    }
   ],
 });
 

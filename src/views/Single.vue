@@ -25,13 +25,13 @@
           class="icon habitat"
         ></router-link>
         <router-link
-          to="/coupling"
+          to="/couplings"
           tag="img"
           :src="require('@/assets/images/coupling_icon.svg')"
           class="icon couplings"
         ></router-link>
         <router-link
-          to="/laying"
+          to="/layings"
           tag="img"
           :src="require('@/assets/images/laying_icon.svg')"
           class="icon layings"

@@ -37,7 +37,14 @@ export default {
     Login,
     Register,
   },
+  data: () => {
+    return {
+      loaded: false,
+      onLoginView: true,
+    };
+  },
   mounted() {
+    if(localStorage.getItem('session')) this.$router.push('home')
     setTimeout(() => {
       gsap.to(".logo", 1, {
         //y: -130,
@@ -62,12 +69,7 @@ export default {
       this.onLoginView = !this.onLoginView;
     },
   },
-  data: () => {
-    return {
-      loaded: false,
-      onLoginView: true,
-    };
-  },
+  
 };
 </script>
 

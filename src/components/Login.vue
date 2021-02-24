@@ -6,9 +6,17 @@
       <div class="line"></div>
     </div>
     <div class="subTitle">with your MyReptileScan account</div>
-    <form action="" class="flex_column">
-      <input type="text" placeholder="Your mail or username" />
-      <input type="password" placeholder="Your password" />
+    <form class="flex_column">
+      <input
+        name="username"
+        type="text"
+        placeholder="Your mail or username"
+      />
+      <input
+        name="password"
+        type="password"
+        placeholder="Your password"
+      />
 
       <div class="rememberBlc">
         <input type="checkbox" class="checkboxes" name="" id="rememberMe" />
@@ -37,6 +45,10 @@
 import gsap from "gsap";
 
 export default {
+  data: function () {
+    return {
+    };
+  },
   props: {
     p_click: Function,
   },
@@ -58,7 +70,7 @@ b {
     text-align: center;
     font-size: 12px;
     color: $light_green;
-    
+
     margin: 10px 0;
   }
   form {
@@ -74,7 +86,7 @@ b {
       label {
         margin-left: 5px;
         color: $grey;
-        
+
         font-size: 11px;
       }
     }

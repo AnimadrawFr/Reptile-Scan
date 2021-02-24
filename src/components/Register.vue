@@ -6,12 +6,28 @@
       <div class="line"></div>
     </div>
     <div class="subTitle">with your MyReptileScan account</div>
-    <form action="" class="flex_column">
-      <input type="text" placeholder="Your mail adresse" />
-      <input type="text" placeholder="Choose an username" />
+    <form class="flex_column">
+      <input
+        name="email"
+        type="text"
+        placeholder="Your mail adresse"
+      />
+      <input
+        name="username"
+        type="text"
+        placeholder="Choose an username"
+      />
 
-      <input type="password" placeholder="Create a password" />
-      <input type="password" placeholder="Confirm password" />
+      <input
+        name="password"
+        type="password"
+        placeholder="Create a password"
+      />
+      <input
+        name="confirmPassword"
+        type="password"
+        placeholder="Confirm password"
+      />
 
       <button class="btn primary">Register</button>
       <b @click="p_click">Already have an account click here</b>
@@ -34,6 +50,10 @@ export default {
   props: {
     p_click: Function,
   },
+  data: function () {
+    return {
+    };
+  },
 };
 </script>
 
@@ -55,7 +75,7 @@ b {
     text-align: center;
     font-size: 12px;
     color: $light_green;
-    
+
     margin: 10px 0;
   }
   form {
@@ -71,7 +91,7 @@ b {
       label {
         margin-left: 5px;
         color: $grey;
-        
+
         font-size: 11px;
       }
     }

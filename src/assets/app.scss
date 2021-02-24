@@ -108,10 +108,12 @@ input[type="password"] {
     }
     .section_head_img {
       position: relative;
+      margin-bottom: 10px;
     }
     .icon {
       position: absolute;
       cursor: pointer;
+      width: 45px;
       &.health {
         margin: -55% 0 0 0;
       }
