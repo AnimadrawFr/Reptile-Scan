@@ -1,10 +1,10 @@
 <template>
   <div id="single" class="single_detail">
-    <header :style="{ backgroundImage: `url('${animalPicture}')` }">
+    <header :style="{ backgroundImage: `url('${animal.picture.url}')` }">
       <div class="header_content">
         <div
           class="animal_picture"
-          :style="{ backgroundImage: `url('${animalPicture}')` }"
+          :style="{ backgroundImage: `url('${animal.picture.url}')` }"
         ></div>
         <router-link
           to="/health"
@@ -46,8 +46,8 @@
         <div class="animal_infos">
           <img src="@/assets/images/no_fav_icon.svg" alt="" />
           <ul>
-            <li>Snakes,</li>
-            <li>Pythons</li>
+            <li>{category},</li>
+            <li>{category}</li>
           </ul>
         </div>
       </div>
@@ -55,18 +55,16 @@
     <main class="flex-column">
       <div class="name">
         <div class="line"></div>
-        <p>Animal name</p>
+        <p>{{ animal.name }}</p>
         <div class="line"></div>
       </div>
-      <p class="birth_date">22/01/2019</p>
+      <p class="birth_date">{birth date}</p>
       <div class="global_information">
-        <p>Ball python</p>
-        <p>Spider</p>
-        <p>Male</p>
+        <p>{{ animal.species }}</p>
+        <p>{{ animal.morph }}</p>
+        <p>{{ animal.sexe ? "Male" : "Female" }}</p>
         <p class="description">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea.
+          {{ animal.description }}
         </p>
         <div class="last_action">
           <p class="title">Last action :</p>
@@ -82,7 +80,29 @@ export default {
   data: function () {
     return {
       animalPicture: require("@/assets/images/sample_picture.jpg"),
+      urlParam: new URLSearchParams(window.location.search),
+      animal: {
+        picture: {
+          url: "",
+        },
+      },
     };
+  },
+
+  async mounted() {
+    try {
+      const response = await this.axios({
+        url: `${process.env.VUE_APP_URL}/classes/Animal/${this.urlParam.get(
+          "animalId"
+        )}`,
+        method: "GET",
+        headers: this.$headers,
+      });
+
+      this.animal = response.data;
+    } catch (e) {
+      console.error(e);
+    }
   },
 };
 </script>

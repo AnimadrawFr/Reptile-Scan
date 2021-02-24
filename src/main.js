@@ -7,20 +7,27 @@ import Health from "@/views/Health.vue";
 import Meals from "@/views/Meals.vue";
 import Layings from "@/views/Layings.vue";
 import Couplings from "@/views/Couplings.vue";
-import VueAxios from 'vue-axios'
-import axios from 'axios'
+import VueAxios from "vue-axios";
+import axios from "axios";
 
-Vue.use(VueAxios, axios)
+Vue.use(VueAxios, axios);
 
-import Donut from 'vue-css-donut-chart';
-import 'vue-css-donut-chart/dist/vcdonut.css';
+import Donut from "vue-css-donut-chart";
+import "vue-css-donut-chart/dist/vcdonut.css";
 
 import Router from "vue-router";
 
 Vue.config.productionTip = false;
 Vue.use(Router);
-Vue.use(Donut)
+Vue.use(Donut);
 
+Vue.prototype.$headers = {
+  "X-Parse-Application-Id": process.env.VUE_APP_ID,
+  "X-Parse-REST-API-Key": process.env.VUE_APP_API_KEY,
+  "X-Parse-Session-Token": localStorage.getItem("session")
+    ? localStorage.getItem("session")
+    : "",
+};
 
 const router = new Router({
   mode: "history",
@@ -54,13 +61,13 @@ const router = new Router({
     {
       path: "/layings",
       component: Layings,
-      name: "layings"
+      name: "layings",
     },
     {
       path: "/couplings",
       component: Couplings,
-      name: "couplings"
-    }
+      name: "couplings",
+    },
   ],
 });
 

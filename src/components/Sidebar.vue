@@ -1,11 +1,16 @@
 <template>
   <div id="sidebar">
-    <img @click="sideBarEvent" class="back" src="@/assets/images/back_icon.svg" alt="" />
+    <img
+      @click="sideBarEvent"
+      class="back"
+      src="@/assets/images/back_icon.svg"
+      alt=""
+    />
     <div class="sidebar_top">
       <div class="profil_picture">
         <img
           class="avatar"
-          src="@/assets/images/profil_picture_sample.svg"
+          :src="user.avatar.url"
           alt=""
         />
         <div class="edit_avatar">
@@ -13,14 +18,13 @@
         </div>
       </div>
       <div class="user_informations">
-        <h3>User Name</h3>
-        <p>lorem@gmail.com</p>
-        <p>ID - 123456789</p>
-        <p>Register : 21/02/2021</p>
+        <h3>{{ user.username }}</h3>
+        <p>{{ user.email }}</p>
+        <p>ID - {{ user.objectId}}</p>
       </div>
     </div>
     <div class="sidebar_bottom">
-      <a href="#"><b>Disconnect</b></a>
+      <b @click="disconnect">Disconnect</b>
       <a href="#">About us</a>
       <a href="#">Give your opinion</a>
       <a href="#">Contact us</a>
@@ -31,9 +35,34 @@
 
 <script>
 export default {
-    props: {
-        sideBarEvent: Function
+  data: function() {
+    return {
+      user: {}
     }
+  },
+  props: {
+    sideBarEvent: Function,
+  },
+  methods: {
+    disconnect() {
+      localStorage.removeItem("session");
+      this.$router.push("/");
+    },
+  },
+  async mounted() {
+    try {
+      const response = await this.axios({
+        url: `${process.env.VUE_APP_URL}/users/me`,
+        method: 'GET',
+        headers: this.$headers
+      })
+
+      this.user = response.data
+      console.log(this.user)
+    } catch(e) {
+      console.error(e)
+    }
+  }
 };
 </script>
 
@@ -64,6 +93,12 @@ export default {
     .profil_picture {
       // border: 1px solid red;
       text-align: center;
+      .avatar {
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
       .edit_avatar {
         position: relative;
         z-index: 10;
@@ -85,7 +120,7 @@ export default {
     .user_informations {
       text-align: center;
       color: $light_green;
-      
+
       p {
         font-size: 14px;
       }
@@ -109,7 +144,7 @@ export default {
       margin: 20px 0;
       color: $grey;
       text-align: center;
-      
+
       font-size: 12px;
       width: 70%;
     }

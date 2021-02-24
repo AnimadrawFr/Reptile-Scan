@@ -6,13 +6,17 @@
       <div class="line"></div>
     </div>
     <div class="subTitle">with your MyReptileScan account</div>
-    <form class="flex_column">
+    <form class="flex_column" @submit.prevent="_submit">
       <input
+        :value="_username"
+        @input="$emit('_username', $event.target.value)"
         name="username"
         type="text"
         placeholder="Your mail or username"
       />
       <input
+        :value="_password"
+        @input="$emit('_password', $event.target.value)"
         name="password"
         type="password"
         placeholder="Your password"
@@ -22,9 +26,8 @@
         <input type="checkbox" class="checkboxes" name="" id="rememberMe" />
         <label for="rememberMe">Remember me</label>
       </div>
-      <router-link to="/home">
-        <button class="btn primary">Log in</button>
-      </router-link>
+      
+      <button class="btn primary">Log in</button>
 
       <b href="#" @click="p_click">You don't have an account yet click here</b>
     </form>
@@ -46,11 +49,13 @@ import gsap from "gsap";
 
 export default {
   data: function () {
-    return {
-    };
+    return {};
   },
   props: {
     p_click: Function,
+    _username: String,
+    _password: String,
+    _submit: Function,
   },
   methods: {},
 };

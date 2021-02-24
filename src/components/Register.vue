@@ -6,24 +6,32 @@
       <div class="line"></div>
     </div>
     <div class="subTitle">with your MyReptileScan account</div>
-    <form class="flex_column">
+    <form class="flex_column" @submit.prevent="_submit">
       <input
+        :value="_email"
+        @input="$emit('_email', $event.target.value)"
         name="email"
         type="text"
         placeholder="Your mail adresse"
       />
       <input
+        :value="_username"
+        @input="$emit('_username', $event.target.value)"
         name="username"
         type="text"
         placeholder="Choose an username"
       />
 
       <input
+        :value="_password"
+        @input="$emit('_password', $event.target.value)"
         name="password"
         type="password"
         placeholder="Create a password"
       />
       <input
+        :value="_confirmPassword"
+        @input="$emit('_confirmPassword', $event.target.value)"
         name="confirmPassword"
         type="password"
         placeholder="Confirm password"
@@ -49,10 +57,14 @@
 export default {
   props: {
     p_click: Function,
+    _email: String,
+    _username: String,
+    _password: String,
+    _confirmPassword: String,
+    _submit: Function,
   },
   data: function () {
-    return {
-    };
+    return {};
   },
 };
 </script>

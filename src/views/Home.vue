@@ -72,64 +72,19 @@
       </div>
     </div>
 
-    <div ref="container" class="container container-list">
-      
-        <div class="card">
-          <router-link to="/single">
-          <img
-            class="card_content"
-            src="@/assets/images/sample_picture.jpg"
-            alt=""
-          />
-          </router-link>
-          <div class="card_bottom">
-            <p>Animal name</p>
-            <img src="@/assets/images/green_no_fav_icon.svg" alt="">
-          </div>
-        </div>
-      
+    <div
+      ref="container"
+      class="container container-list"
+      v-for="(item, i) in animals"
+      :key="i"
+    >
       <div class="card">
-        <img
-          class="card_content"
-          src="@/assets/images/sample_picture_two.jpg"
-          alt=""
-        />
+        <router-link :to="`/single?animalId=${item.objectId}`">
+          <img class="card_content" :src="item.picture.url" alt="" />
+        </router-link>
         <div class="card_bottom">
-          <p>Animal name</p>
-          <img src="@/assets/images/green_no_fav_icon.svg" alt="">
-        </div>
-      </div>
-      <div class="card">
-        <img
-          class="card_content"
-          src="@/assets/images/sample_picture_two.jpg"
-          alt=""
-        />
-        <div class="card_bottom">
-          <p>Animal name</p>
-          <img src="@/assets/images/green_no_fav_icon.svg" alt="">
-        </div>
-      </div>
-      <div class="card">
-        <img
-          class="card_content"
-          src="@/assets/images/sample_picture.jpg"
-          alt=""
-        />
-        <div class="card_bottom">
-          <p>Animal name</p>
-          <img src="@/assets/images/green_no_fav_icon.svg" alt="">
-        </div>
-      </div>
-      <div class="card">
-        <img
-          class="card_content"
-          src="@/assets/images/sample_picture_two.jpg"
-          alt=""
-        />
-        <div class="card_bottom">
-          <p>Animal name</p>
-          <img src="@/assets/images/green_no_fav_icon.svg" alt="">
+          <p>{{ item.name }}</p>
+          <img src="@/assets/images/green_no_fav_icon.svg" alt="" />
         </div>
       </div>
     </div>
@@ -142,11 +97,40 @@ import gsap from "gsap";
 export default {
   data: function () {
     return {
+      animals: [],
       selected: [],
       cards: document.querySelectorAll(".cards"),
       quadriIcon: require("@/assets/images/sort_quadri_icon.svg"),
       listIcon: require("@/assets/images/sort_list_icon.svg"),
     };
+  },
+  created() {
+    if (!localStorage.getItem("session")) this.$router.push("/");
+  },
+  async mounted() {
+    try {
+      const response = await this.axios({
+        url: `${process.env.VUE_APP_URL}/users/me`,
+        method: "GET",
+        headers: this.$headers,
+      });
+    } catch (e) {
+      localStorage.removeItem("session");
+      this.$router.push("/");
+      console.error(e);
+    }
+
+    // set current user animals
+    try {
+      const response = await this.axios({
+        url: `${process.env.VUE_APP_URL}/classes/Animal`,
+        method: "GET",
+        headers: this.$headers,
+      });
+      this.animals = response.data.results;
+    } catch (e) {
+      console.error(e);
+    }
   },
   methods: {
     selectedCat(category) {
@@ -158,7 +142,7 @@ export default {
       }
     },
     swap(oldClass, newClass) {
-      const container = this.$refs.container.classList;
+      const container = document.querySelector('.container');
       if (container.contains(oldClass)) {
         container.remove(oldClass);
         container.add(newClass);
@@ -222,7 +206,7 @@ export default {
       padding: 0 10px;
       font-size: 13px;
       border-radius: 5px;
-      
+
       color: $light_green;
       border: 1.5px solid $light_green;
       margin: 0 5px;
@@ -258,7 +242,7 @@ export default {
     min-height: 160px;
     max-width: 48%;
     color: $light_green;
-    
+
     .card_content {
       width: 100%;
       object-fit: cover;
@@ -295,7 +279,7 @@ export default {
     min-height: 160px;
     width: 100%;
     color: $light_green;
-    
+
     .card_content {
       width: 100%;
       height: 150px;
@@ -326,7 +310,7 @@ export default {
   margin-top: 40px;
   h1 {
     color: $light_green;
-    
+
     width: 100px;
     margin: 0;
   }
