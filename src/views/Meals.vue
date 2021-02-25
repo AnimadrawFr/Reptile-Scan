@@ -1,33 +1,15 @@
 <template>
   <div id="health">
-    <header :style="{ backgroundImage: `url('${animalPicture}')` }">
-      <div class="header_content">
-        <h3>Meals</h3>
-        <span class="weight_info">success</span>
-        <span class="size_info">missed</span>
-        <vc-donut
-          :sections="[
-            { value: 60, color: '#CFE6FF', label: 'succes' },
-            { value: 40, color: '#CEFF7A', label: 'missed' },
-          ]"
-          :size="200"
-          unit="px"
-          :total="100"
-          background="rgba(0, 0, 0, 0.8)"
-          :thickness="20"
-          text="60% succes"
-        >
-        </vc-donut>
 
-        <div class="animal_infos">
-          <img src="@/assets/images/no_fav_icon.svg" alt="" />
-          <ul>
-            <li>Snakes,</li>
-            <li>Pythons</li>
-          </ul>
-        </div>
-      </div>
-    </header>
+    <HeadSection 
+      :_picture="animalPicture"
+      _sectionTitle="Meals"
+      _informationsClass="health_infos"
+      _content="[health informations]"
+      :_showDonut="true"
+      :_showHead_img="false"
+    />
+
     <main class="flex-column">
       <div class="name">
         <div class="line"></div>
@@ -45,14 +27,9 @@
       </div>
       <p>Meals of the month :</p>
       <div class="meals">
-        <div class="card">
-          <div class="date">
-            <h3 class="day">23</h3>
-            <p class="month">07/20</p>
-          </div>
-          <div class="sepp"></div>
-          <div class="data">Mouse 70g <br/> accepted</div>
-        </div>
+        <ActionsCards _day="22" _month="07" _fullYear="20" _content="Mouse 30g" />
+        <ActionsCards _day="19" _month="07" _fullYear="20" _content="Mouse 10g" />
+
         <button class="card addAction">Add</button>
       </div>
     </main>
@@ -62,6 +39,9 @@
 
 <script>
 import { Tabs, Tab } from "vue-slim-tabs";
+import Categories from "@/components/Categories";
+import ActionsCards from "@/components/ActionsCards";
+import HeadSection from "@/components/HeadSection"
 
 export default {
   data: function () {
@@ -72,25 +52,30 @@ export default {
   components: {
     Tabs,
     Tab,
+    Categories,
+    ActionsCards,
+    HeadSection
   },
+  async mounted() {
+    try {
+      const response = await this.axios({
+        url: `${process.env.VUE_APP_URL}/classes/Meal`,
+        method: 'GET',
+        headers: this.$headers
+      })
+
+      console.log(response)
+    } catch(e) {
+      console.error(e)
+    }
+  }
 };
 </script>
 
 <style src="vue-slim-tabs/themes/default.css"></style>
 <style  lang="scss">
 @import "./src/assets/app.scss";
-.header_content {
-  span {
-    position: absolute;
-    font-size: 14px;
-  }
-  span.weight_info {
-    margin-top: 29px;
-  }
-  span.size_info {
-    top: 262px;
-  }
-}
+
 .data {
   font-size: 12px;
 }
@@ -127,35 +112,6 @@ main p {
     border: none;
     border-radius: 5px;
     color: $white;
-  }
-  .card {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    border: 1px solid $light_green;
-    max-height: 50px;
-    border-radius: 5px;
-    width: 48.5%;
-    margin: 2px 2px;
-    border-left: 5px solid $light_green;
-    .date {
-      height: 50px;
-      color: $dark_green;
-      line-height: 0px;
-      text-align: center;
-      h3 {
-        font-size: 18px;
-      }
-      p {
-        font-size: 12px;
-      }
-    }
-    .sepp {
-      width: 2px;
-      height: 30px;
-      background-color: $light_green;
-    }
   }
 }
 .vue-tab[aria-selected="true"] {

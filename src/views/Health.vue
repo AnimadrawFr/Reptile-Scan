@@ -1,26 +1,14 @@
 <template>
   <div id="health">
-    <header :style="{ backgroundImage: `url('${animalPicture}')` }">
-      
-      <div class="header_content">
-        <h3>Health</h3>
-        <span class="weight_info">+5g</span>
-        <span class="size_info">+60cm</span>
-        <img
-          class="section_head_img"
-          src="@/assets/images/health_head.svg"
-          alt=""
-        />
-        
-        <div class="animal_infos">
-          <img src="@/assets/images/no_fav_icon.svg" alt="" />
-          <ul>
-            <li>Snakes,</li>
-            <li>Pythons</li>
-          </ul>
-        </div>
-      </div>
-    </header>
+    <HeadSection 
+      :_picture="animalPicture"
+      _sectionTitle="Health"
+      :_sectionIllustration="require('@/assets/images/health_head.svg')"
+      _informationsClass="health_infos"
+      _content="[health informations]"
+      :_showHead_img="true"
+    />
+
     <main class="flex-column">
       <div class="name">
         <div class="line"></div>
@@ -29,48 +17,22 @@
       </div>
       <tabs>
         <tab title="weight">
-          <button class="card addAction">Add</button>
-          <div class="card">
-            <div class="date">
-              <h3 class="day">23</h3>
-              <p class="month">07/20</p>
-            </div>
-            <div class="sepp"></div>
-            <div class="data">60 cm</div>
-          </div>
-          <div class="card">
-            <div class="date">
-              <h3 class="day">23</h3>
-              <p class="month">07/20</p>
-            </div>
-            <div class="sepp"></div>
-            <div class="data">60 cm</div>
-          </div>
-          <div class="card">
-            <div class="date">
-              <h3 class="day">23</h3>
-              <p class="month">07/20</p>
-            </div>
-            <div class="sepp"></div>
-            <div class="data">60 cm</div>
-          </div>
+          <ActionsCards _day="22" _month="07" _fullYear="20" _content="260 g" />
+          <ActionsCards _day="30" _month="07" _fullYear="20" _content="280 g" />
+          <button class="card addAction">Add weight</button>
         </tab>
         <tab title="size">
-          <button class="card addAction">Add</button>
+          <ActionsCards _day="22" _month="07" _fullYear="20" _content="80 cm" />
+          <ActionsCards _day="30" _month="07" _fullYear="20" _content="82 cm" />
+          <button class="card addAction">Add size</button>
         </tab>
         <tab title="visits">
-          <button class="card addAction">Add</button>
+          <ActionsCards _day="22" _month="07" _fullYear="20" _content="Lorem ipsum" />
+          <ActionsCards _day="30" _month="07" _fullYear="20" _content="Lorem ipsum" />
+          <button class="card addAction">Add visit</button>
         </tab>
         <tab title="treatments">
-          <button class="card addAction">Add</button>
-          <div class="card">
-            <div class="date">
-              <h3 class="day">23</h3>
-              <p class="month">07/20</p>
-            </div>
-            <div class="sepp"></div>
-            <div class="data">60 cm</div>
-          </div>
+          <button class="card addAction">Add treatment</button>
         </tab>
       </tabs>
     </main>
@@ -80,6 +42,9 @@
 
 <script>
 import { Tabs, Tab } from "vue-slim-tabs";
+import Categories from '@/components/Categories'
+import ActionsCards from '@/components/ActionsCards'
+import HeadSection from '@/components/HeadSection'
 
 export default {
   data: function () {
@@ -90,6 +55,9 @@ export default {
   components: {
     Tabs,
     Tab,
+    Categories,
+    ActionsCards,
+    HeadSection
   },
 };
 </script>

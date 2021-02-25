@@ -8,11 +8,7 @@
     />
     <div class="sidebar_top">
       <div class="profil_picture">
-        <img
-          class="avatar"
-          :src="user.avatar.url"
-          alt=""
-        />
+        <img class="avatar" :src="user.avatar.url" alt="" />
         <div class="edit_avatar">
           <img src="@/assets/images/edit_icon.svg" alt="" />
         </div>
@@ -20,7 +16,7 @@
       <div class="user_informations">
         <h3>{{ user.username }}</h3>
         <p>{{ user.email }}</p>
-        <p>ID - {{ user.objectId}}</p>
+        <p>ID - {{ user.objectId }}</p>
       </div>
     </div>
     <div class="sidebar_bottom">
@@ -35,10 +31,10 @@
 
 <script>
 export default {
-  data: function() {
+  data: function () {
     return {
-      user: {}
-    }
+      user: { avatar: { url: "" }},
+    };
   },
   props: {
     sideBarEvent: Function,
@@ -53,16 +49,15 @@ export default {
     try {
       const response = await this.axios({
         url: `${process.env.VUE_APP_URL}/users/me`,
-        method: 'GET',
-        headers: this.$headers
-      })
+        method: "GET",
+        headers: this.$headers,
+      });
 
-      this.user = response.data
-      console.log(this.user)
-    } catch(e) {
-      console.error(e)
+      this.user = response.data;
+    } catch (e) {
+      console.error(e);
     }
-  }
+  },
 };
 </script>
 

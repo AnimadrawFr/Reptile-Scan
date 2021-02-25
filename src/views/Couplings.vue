@@ -1,29 +1,14 @@
 <template>
   <div id="health">
-    <header :style="{ backgroundImage: `url('${animalPicture}')` }">
-      <div class="header_content">
-        <h3>Couplings</h3>
+    <HeadSection 
+      :_picture="animalPicture"
+      _sectionTitle="Couplings"
+      :_sectionIllustration="require('@/assets/images/couplings_head_illustration.svg')"
+      _informationsClass="couplings_infos"
+      _content="3 Couplings"
+      :_showHead_img="true"
+    />
 
-        <img
-          class="section_head_img"
-          src="@/assets/images/couplings_head_illustration.svg"
-          alt=""
-        />
-
-        <div class="couplings_infos">
-          3 couplings <br />
-          Since registration
-        </div>
-
-        <div class="animal_infos">
-          <img src="@/assets/images/no_fav_icon.svg" alt="" />
-          <ul>
-            <li>Snakes,</li>
-            <li>Pythons</li>
-          </ul>
-        </div>
-      </div>
-    </header>
     <main class="flex-column">
       <div class="name">
         <div class="line"></div>
@@ -33,17 +18,7 @@
 
       <p>List of couplings since registration</p>
       <div class="couplings">
-        <div class="card">
-          <div class="date">
-            <h3 class="day">23</h3>
-            <p class="month">07/20</p>
-          </div>
-          <div class="sepp"></div>
-          <div class="data">
-            Coupling with animal name <br />
-            Lorem ipsum dolor sit amet
-          </div>
-        </div>
+        <ActionsCards _day="22" _month="07" _fullYear="20" _content="Lorem ipsum" />
         <button class="addAction">Add coupling</button>
       </div>
     </main>
@@ -53,6 +28,9 @@
 
 <script>
 import { Tabs, Tab } from "vue-slim-tabs";
+import Categories from '@/components/Categories'
+import ActionsCards from '@/components/ActionsCards'
+import HeadSection from '@/components/HeadSection'
 
 export default {
   data: function () {
@@ -63,6 +41,9 @@ export default {
   components: {
     Tabs,
     Tab,
+    Categories,
+    ActionsCards,
+    HeadSection
   },
 };
 </script>

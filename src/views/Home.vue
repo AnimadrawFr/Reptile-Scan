@@ -72,17 +72,12 @@
       </div>
     </div>
 
-    <div
-      ref="container"
-      class="container container-list"
-      v-for="(item, i) in animals"
-      :key="i"
-    >
-      <div class="card">
+    <div ref="container" class="container container-list">
+      <div class="home_card" v-for="(item, i) in animals" :key="i">
         <router-link :to="`/single?animalId=${item.objectId}`">
-          <img class="card_content" :src="item.picture.url" alt="" />
+          <img class="home_card_content" :src="item.picture.url" alt="" />
         </router-link>
-        <div class="card_bottom">
+        <div class="home_card_bottom">
           <p>{{ item.name }}</p>
           <img src="@/assets/images/green_no_fav_icon.svg" alt="" />
         </div>
@@ -99,7 +94,7 @@ export default {
     return {
       animals: [],
       selected: [],
-      cards: document.querySelectorAll(".cards"),
+      cards: document.querySelectorAll(".home_cards"),
       quadriIcon: require("@/assets/images/sort_quadri_icon.svg"),
       listIcon: require("@/assets/images/sort_list_icon.svg"),
     };
@@ -142,7 +137,7 @@ export default {
       }
     },
     swap(oldClass, newClass) {
-      const container = document.querySelector('.container');
+      const container = this.$refs.container.classList;
       if (container.contains(oldClass)) {
         container.remove(oldClass);
         container.add(newClass);
@@ -236,20 +231,19 @@ export default {
   align-items: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
-  .card {
+  .home_card {
     position: relative;
     // border: 1px solid red;
     min-height: 160px;
     max-width: 48%;
     color: $light_green;
 
-    .card_content {
+    .home_card_content {
       width: 100%;
       object-fit: cover;
       border-radius: 5px;
     }
-    .card_bottom {
-      margin-top: -10px;
+    .home_card_bottom {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -273,20 +267,20 @@ export default {
   width: 90%;
   margin-top: 15px;
   flex-wrap: wrap;
-  .card {
+  .home_card {
     position: relative;
     // border: 1px solid red;
     min-height: 160px;
     width: 100%;
     color: $light_green;
 
-    .card_content {
+    .home_card_content {
       width: 100%;
       height: 150px;
       object-fit: cover;
       border-radius: 5px;
     }
-    .card_bottom {
+    .home_card_bottom {
       margin-top: -10px;
       display: flex;
       align-items: center;
