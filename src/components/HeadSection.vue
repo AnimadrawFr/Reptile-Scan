@@ -12,16 +12,13 @@
 
       <vc-donut
         v-show="_showDonut"
-        :sections="[
-          { value: 60, color: '#CFE6FF', label: 'succes' },
-          { value: 40, color: '#CEFF7A', label: 'missed' },
-        ]"
+        :sections="_sections"
         :size="200"
         unit="px"
         :total="100"
         background="rgba(0, 0, 0, 0.8)"
         :thickness="20"
-        text="60% succes"
+        :text="_result"
       >
       </vc-donut>
 
@@ -29,7 +26,6 @@
         {{ _content }}
       </div>
 
-      <Categories />
     </div>
   </header>
 </template>
@@ -48,7 +44,9 @@ export default {
     _informationsClass: String,
     _content: String,
     _showDonut: Boolean,
-    _showHead_img: Boolean
+    _showHead_img: Boolean,
+    _sections: Array,
+    _result: String
   },
 };
 </script>

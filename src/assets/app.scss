@@ -129,6 +129,9 @@ input[type="password"] {
       &.layings {
         margin: 0 47% -30% 0;
       }
+      &.isMale {
+        opacity: 0.2;
+      }
       &.meals {
         margin: 0 0 30% -47%;
       }

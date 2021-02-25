@@ -93,6 +93,8 @@ export default {
             },
           });
           localStorage.setItem("session", response.data.sessionToken);
+          this.$headers['X-Parse-Session-Token'] = response.data.sessionToken
+          console.log(localStorage.getItem('session'))
           this.$router.push("home");
         } catch (e) {
           console.error(e);

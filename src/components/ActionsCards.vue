@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" :class="_success">
     <div class="date">
       <h3 class="day">{{ _day }}</h3>
       <p class="month">{{ _month }}/{{ _fullYear }}</p>
@@ -14,10 +14,11 @@
 <script>
 export default {
   props: {
-    _day: String,
-    _month: String,
-    _fullYear: String,
-    _content: String
+    _day: Number,
+    _month: Number,
+    _fullYear: Number,
+    _content: String,
+    _success: String
   },
 };
 </script>
@@ -36,6 +37,9 @@ export default {
   width: 48.5%;
   margin: 2px 2px;
   border-left: 5px solid $light_green;
+  &.red {
+    border-left: 5px solid red;
+  }
   .date {
     height: 50px;
     color: $dark_green;

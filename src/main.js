@@ -10,6 +10,7 @@ import Couplings from "@/views/Couplings.vue";
 import VueAxios from "vue-axios";
 import axios from "axios";
 
+
 Vue.use(VueAxios, axios);
 
 import Donut from "vue-css-donut-chart";
@@ -25,8 +26,11 @@ Vue.prototype.$headers = {
   "X-Parse-Application-Id": process.env.VUE_APP_ID,
   "X-Parse-REST-API-Key": process.env.VUE_APP_API_KEY,
   "X-Parse-Session-Token": localStorage.getItem("session")
-    ? localStorage.getItem("session")
-    : "",
+};
+
+Vue.prototype.$headersNoToken = {
+  "X-Parse-Application-Id": process.env.VUE_APP_ID,
+  "X-Parse-REST-API-Key": process.env.VUE_APP_API_KEY
 };
 
 const router = new Router({

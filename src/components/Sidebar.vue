@@ -34,6 +34,7 @@ export default {
   data: function () {
     return {
       user: { avatar: { url: "" }},
+      
     };
   },
   props: {

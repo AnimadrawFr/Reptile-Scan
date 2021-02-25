@@ -31,23 +31,33 @@
           class="icon couplings"
         ></router-link>
         <router-link
+          v-show="animal.sexe != 1"
+          disabled
           to="/layings"
           tag="img"
           :src="require('@/assets/images/laying_icon.svg')"
           class="icon layings"
         ></router-link>
+        <img v-show="animal.sexe != 0" class="icon layings isMale" :src="require('@/assets/images/laying_icon.svg')" alt="">
         <router-link
-          to="/meals"
+          :to="`/meals?animalId=${animal.objectId}`"
           tag="img"
           :src="require('@/assets/images/meals_icon.svg')"
           class="icon meals"
         ></router-link>
 
         <div class="animal_infos">
-          <img src="@/assets/images/no_fav_icon.svg" alt="" />
+          <img
+            :src="
+              animal.favorite
+                ? require('@/assets/images/fav_icon.svg')
+                : require('@/assets/images/no_fav_icon.svg')
+            "
+            @click="manageFavorite"
+            alt=""
+          />
           <ul>
-            <li>{category},</li>
-            <li>{category}</li>
+            <li>Category: {{ category }}</li>
           </ul>
         </div>
       </div>
@@ -58,7 +68,14 @@
         <p>{{ animal.name }}</p>
         <div class="line"></div>
       </div>
-      <p class="birth_date">{birth date}</p>
+      <p class="birth_date">
+        Birthday :
+        {{
+          `${new Date(animal.birthday.iso).getDate()}/${
+            new Date(animal.birthday.iso).getMonth() + 1
+          }/${new Date(animal.birthday.iso).getFullYear()}`
+        }}
+      </p>
       <div class="global_information">
         <p>{{ animal.species }}</p>
         <p>{{ animal.morph }}</p>
@@ -85,10 +102,29 @@ export default {
         picture: {
           url: "",
         },
+        birthday: {
+          iso: "",
+        },
       },
+      category: "",
     };
   },
-
+  methods: {
+    manageFavorite() {
+      this.axios({
+        url: `${process.env.VUE_APP_URL}/classes/Animal/${this.urlParam.get(
+          "animalId"
+        )}`,
+        method: "PUT",
+        headers: this.$headers,
+        data: {
+          favorite: !this.animal.favorite,
+        },
+      }).then((res) => {
+        this.animal.favorite = !this.animal.favorite
+      });
+    },
+  },
   async mounted() {
     try {
       const response = await this.axios({
@@ -100,6 +136,17 @@ export default {
       });
 
       this.animal = response.data;
+    } catch (e) {
+      console.error(e);
+    }
+
+    try {
+      const response = await this.axios({
+        url: `${process.env.VUE_APP_URL}/classes/Categorie?where={"objectId": "${this.animal.categorie_id.objectId}" }`,
+        method: "GET",
+        headers: this.$headers,
+      });
+      this.category = response.data.results[0].title;
     } catch (e) {
       console.error(e);
     }

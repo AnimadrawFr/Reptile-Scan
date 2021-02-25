@@ -1,7 +1,11 @@
 <template>
   <div class="home flex_column">
     <form class="search flex_column" action="">
-      <input type="search" placeholder="Search an animal" />
+      <input
+        type="search"
+        placeholder="Search an animal"
+        v-model="searchString"
+      />
     </form>
 
     <div class="categoriesList">
@@ -9,52 +13,19 @@
       <div class="list">
         <div
           class="puce"
-          @click="selectedCat('all')"
-          :class="selected.includes('all') ? '' : 'selected'"
+          :class="selectedCat === 'All' ? 'selected' : ''"
+          @click="selectedCat = 'All'"
         >
           All
         </div>
         <div
+          v-for="(item, i) in categories"
+          :key="i"
           class="puce"
-          @click="selectedCat('lizards')"
-          :class="selected.includes('lizards') ? 'selected' : ''"
+          @click="selectedCat = item.objectId"
+          :class="selectedCat === item.objectId ? 'selected' : ''"
         >
-          Lizards
-        </div>
-        <div
-          class="puce"
-          @click="selectedCat('snakes')"
-          :class="selected.includes('snakes') ? 'selected' : ''"
-        >
-          Snakes
-        </div>
-        <div
-          class="puce"
-          @click="selectedCat('spiders')"
-          :class="selected.includes('spiders') ? 'selected' : ''"
-        >
-          Spiders
-        </div>
-        <div
-          class="puce"
-          @click="selectedCat('frogs')"
-          :class="selected.includes('frogs') ? 'selected' : ''"
-        >
-          Frogs
-        </div>
-        <div
-          class="puce"
-          @click="selectedCat('others')"
-          :class="selected.includes('others') ? 'selected' : ''"
-        >
-          Others
-        </div>
-        <div
-          class="puce"
-          @click="selectedCat('favorites')"
-          :class="selected.includes('favorites') ? 'selected' : ''"
-        >
-          ♡
+          {{ item.title }}
         </div>
       </div>
     </div>
@@ -73,13 +44,21 @@
     </div>
 
     <div ref="container" class="container container-list">
-      <div class="home_card" v-for="(item, i) in animals" :key="i">
+      <div class="home_card" v-for="(item, i) in filteredData" :key="i" v-show="selectedCat === item.categorie_id.objectId || selectedCat === 'All'">
         <router-link :to="`/single?animalId=${item.objectId}`">
           <img class="home_card_content" :src="item.picture.url" alt="" />
         </router-link>
         <div class="home_card_bottom">
           <p>{{ item.name }}</p>
-          <img src="@/assets/images/green_no_fav_icon.svg" alt="" />
+          <img
+            :src="
+              item.favorite
+                ? require('@/assets/images/green_fav_icon.svg')
+                : require('@/assets/images/green_no_fav_icon.svg')
+            "
+            @click="manageFavorite(item)"
+            alt=""
+          />
         </div>
       </div>
     </div>
@@ -94,13 +73,37 @@ export default {
     return {
       animals: [],
       selected: [],
+      categories: [],
+      selectedCat: "All",
       cards: document.querySelectorAll(".home_cards"),
       quadriIcon: require("@/assets/images/sort_quadri_icon.svg"),
       listIcon: require("@/assets/images/sort_list_icon.svg"),
+      searchString: "",
     };
   },
   created() {
     if (!localStorage.getItem("session")) this.$router.push("/");
+  },
+  computed: {
+    filteredData: function () {
+      var search_array = this.animals,
+        searchString = this.searchString;
+
+      if (!searchString) {
+        return search_array;
+      }
+
+      searchString = searchString.trim().toLowerCase();
+
+      search_array = search_array.filter((item) => {
+        if (item.name.toLowerCase().indexOf(searchString) !== -1) {
+          return item;
+        }
+      });
+
+      // Return an array with the filtered data.
+      return search_array;
+    },
   },
   async mounted() {
     try {
@@ -123,18 +126,36 @@ export default {
         headers: this.$headers,
       });
       this.animals = response.data.results;
+      console.log(this.animals);
+    } catch (e) {
+      console.error(e);
+    }
+
+    try {
+      const response = await this.axios({
+        url: `${process.env.VUE_APP_URL}/classes/Categorie`,
+        method: "GET",
+        headers: this.$headers,
+      });
+      this.categories = response.data.results;
+      console.log(this.categories);
+      console.log(this.animals);
     } catch (e) {
       console.error(e);
     }
   },
   methods: {
-    selectedCat(category) {
-      const index = this.selected.indexOf(category);
-      if (index !== -1) {
-        this.selected.splice(index, 1);
-      } else {
-        this.selected.push(category);
-      }
+    manageFavorite(item) {
+      this.axios({
+        url: `${process.env.VUE_APP_URL}/classes/Animal/${item.objectId}`,
+        method: "PUT",
+        headers: this.$headers,
+        data: {
+          favorite: !item.favorite,
+        },
+      }).then((res) => {
+        item.favorite = !item.favorite;
+      });
     },
     swap(oldClass, newClass) {
       const container = this.$refs.container.classList;
@@ -250,12 +271,14 @@ export default {
       width: 100%;
       height: 45px;
       //border: 1px solid red;
+      font-size: 20px;
       p {
-        font-size: 12px;
+        font-size: 16px;
+        font-weight: bold;
       }
       img {
-        width: 15px;
-        height: 15px;
+        width: 20px;
+        height: 20px;
       }
     }
   }
@@ -281,16 +304,17 @@ export default {
       border-radius: 5px;
     }
     .home_card_bottom {
-      margin-top: -10px;
+      margin-top: -5px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       p {
-        font-size: 12px;
+        font-size: 16px;
+        font-weight: bold;
       }
       img {
-        width: 15px;
-        height: 15px;
+        width: 20px;
+        height: 20px;
       }
     }
   }
